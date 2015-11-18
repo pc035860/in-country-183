@@ -1,0 +1,24 @@
+.container {
+    max-width: 700px;
+}
+
+.record {
+    line-height: 40px;
+}
+.record__remove {
+    position: relative;
+    display: inline-block;
+    margin-left: 10px;
+}
+.record__remove::after {
+    content: '';
+
+    position: absolute;
+    left: 50%; top: 50%;
+
+    width: 40px;
+    height: 40px;
+
+    margin-left: -20px;
+    margin-top: -20px;
+}

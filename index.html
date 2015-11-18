@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="in-country-183">
+
+<head>
+  <meta charset="UTF-8">
+  <title>居住滿 183 天試算器</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/css/bootstrap.min.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body ng-controller="MainCtrl">
+  <div class="container">
+    <h1>居住滿 183 天試算器</h2>
+    <div>
+      <h2>計算方法</h2>
+      <div class="radio">
+        <label for="type-in">
+          <input ng-model="type" type="radio" name="type" value="不在" ng-click="countDates()" id="type-in" /> 我比較常在國內（只填寫出國的日子）
+        </label>
+      </div>
+      <div class="radio">
+        <label for="type-out">
+          <input ng-model="type" ng-click="countDates()" type="radio" name="type" value="在" id="type-out" /> 我比較常在國外（只填寫在國內的日子）
+        </label>
+      </div>
+      <form ng-submit="addDate()">
+        <h3>
+          {{type}}國內的日子<br>
+          <small>ex. 2015/11/17. 需照格式填寫</small>
+        </h3>
+
+        <div class="row">
+          <div class="col-sm-6">
+            <div class="form-group">
+              <label for="start-date">開始</label>
+              <input class="form-control" type="date" ng-model="startDate" size="30" placeholder="填寫開始時間" id="start-date" />
+            </div>
+          </div>
+          <div class="col-sm-6">
+            <div class="form-group">
+              <label for="end-date">結束</label>
+              <input class="form-control" type="date" ng-model="endDate" size="30" placeholder="填寫結束時間,ex. 2015-11-20" id="end-date" />
+            </div>
+          </div>
+        </div>
+
+        <input class="btn btn-primary" type="submit" value="新增">
+      </form>
+      <hr />
+
+      <h2>
+        相關記錄
+      </h2>
+      <p>過去 365 天 {{type}} 國內的紀錄</p>
+
+      <ul>
+        <li ng-repeat="date in dates" class="record">
+          {{date.duration}} <a href="" class="record__remove" ng-click="removeDate(date)"><i class="glyphicon glyphicon-remove"></i></a>
+        </li>
+      </ul>
+
+      <br /> 過去 365 天 {{type}} 國內的日數：{{alldate}}
+      <br /> 過去 365 天 {{type2}} 國內的日數：{{alldate2}}
+      <br />
+      <br /> 滿足條件日：{{valid}}
+    </div>
+  </div>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.29/angular.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.15/angular-ui-router.min.js"></script>
+  <script src="app.js"></script>
+</body>
+
+</html>
