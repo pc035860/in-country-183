@@ -62,7 +62,7 @@ function MainCtrl ($scope, $state, $log) {
         }
         var founddates = alldates.filter(indate);
         $scope.alldate = founddates.length;
-        $scope.type2 = $scope.type == "在" ?"不在" :"在";
+        $scope.type2 = ($scope.type === "在") ? "不在" : "在";
         $scope.alldate2 = 365 -     $scope.alldate;        
         var rule = 0 ,diff = 0;
         if($scope.type == "在"){
@@ -114,6 +114,9 @@ function MainCtrl ($scope, $state, $log) {
         }
     };
 
+    $scope.typeChanged = function () {
+        updateUrl($scope.type, $scope.dates);
+    };
 
     init();
 
@@ -132,6 +135,7 @@ function MainCtrl ($scope, $state, $log) {
                 if (data) {
                     $scope.type = data.type;
                     $scope.dates = data.dates;
+                    $scope.type2 = $scope.type == "在" ?"不在" :"在";
                 }
             }
         });
@@ -156,7 +160,7 @@ function MainCtrl ($scope, $state, $log) {
      * {type}t{start1}v{end1}u{start2}v{end2} ...
      */
     function updateUrl(type, dates) {
-        type = (type === '在') ? 1 : 2;
+        type = (type === '不在') ? 1 : 2;
 
         if (dates.length > 0) {
             var ref = +new Date(),
@@ -187,7 +191,7 @@ function MainCtrl ($scope, $state, $log) {
             return null;
         }
 
-        var type = (m[1] === 1) ? '在' : '不在';
+        var type = (m[1] == '1') ? '不在' : '在';
 
         var dates = [];
 

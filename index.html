@@ -14,13 +14,13 @@
     <div>
       <h2>計算方法</h2>
       <div class="radio">
-        <label for="type-in">
-          <input ng-model="type" type="radio" name="type" value="不在" ng-click="countDates()" id="type-in" /> 我比較常在國內（只填寫出國的日子）
+        <label for="type-in" ng-click="countDates(); typeChanged();">
+          <input ng-model="type" type="radio" name="type" value="不在" id="type-in" /> 我比較常在國內（只填寫出國的日子）
         </label>
       </div>
       <div class="radio">
-        <label for="type-out">
-          <input ng-model="type" ng-click="countDates()" type="radio" name="type" value="在" id="type-out" /> 我比較常在國外（只填寫在國內的日子）
+        <label for="type-out" ng-click="countDates(); typeChanged();">
+          <input ng-model="type" type="radio" name="type" value="在" id="type-out" /> 我比較常在國外（只填寫在國內的日子）
         </label>
       </div>
       <form ng-submit="addDate()">
