@@ -2,7 +2,13 @@
 
 Based on [TonyQ's jsfiddle](http://jsfiddle.net/8x8dwz06/3/)
 
-#### 修改
+### Hackpad
+
+https://hackpad.com/183-E9p5nSwoYgc
+
+### Changelog
+
+#### 初版
 
 - 資料儲存在網址
 - 刪除增加的項目
